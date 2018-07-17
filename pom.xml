@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.aries.batch</groupId>
+    <artifactId>csv</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <name>Batch CSV</name>
+    <description>Batch CSV</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- TODO: 플러그인 jar 파일 생성 디렉토리 및 파일 네이밍 설정 -->
+        <plugin.output.directoryName>${project.basedir}/dist</plugin.output.directoryName>
+        <plugin.output.fileName>${project.artifactId}-${project.version}</plugin.output.fileName>
+    </properties>
+
+    <dependencies>
+        <!-- TODO: 제니퍼 플러그인을 구현하기 위한 필수 라이브러리 -->
+        <dependency>
+            <groupId>com.aries</groupId>
+            <artifactId>extension</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <artifactSet>
+                        <excludes>
+                            <exclude>org.slf4j:*</exclude>
+                            <exclude>com.aries:extension:*</exclude>
+                            <exclude>org.apache.velocity:*</exclude>
+                            <exclude>org.apache.commons:*</exclude>
+                            <exclude>javax.servlet:*</exclude>
+                            <exclude>javax.xml.stream:*</exclude>
+                            <exclude>org.springframework:*</exclude>
+                            <exclude>org.apache.velocity:*</exclude>
+                            <exclude>org.apache.commons:*</exclude>
+                            <exclude>org.json:*</exclude>
+                            <exclude>org.reflections:*</exclude>
+                            <exclude>org.quartz-scheduler:*</exclude>
+                            <exclude>com.fasterxml.jackson.core:*</exclude>
+                            <exclude>com.thoughtworks.xstream:*</exclude>
+                            <exclude>com.google.code.gson:*</exclude>
+                            <exclude>com.google.guava:*</exclude>
+                            <exclude>com.google.http-client:*</exclude>
+                            <exclude>com.navercorp.lucy:*</exclude>
+                            <exclude>commons-fileupload:*</exclude>
+                            <exclude>commons-codec:*</exclude>
+                            <exclude>io.jsonwebtoken:*</exclude>
+                            <exclude>httpunit:*</exclude>
+                            <exclude>rhino:*</exclude>
+                            <exclude>gdata:*</exclude>
+                            <exclude>io.jsonwebtoken:*</exclude>
+                        </excludes>
+                    </artifactSet>
+                    <outputFile>${plugin.output.directoryName}/${plugin.output.fileName}.${project.packaging}</outputFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>my-local-repo</id>
+            <url>file://${project.basedir}/lib</url>
+        </repository>
+        <repository>
+            <id>central</id>
+            <url>http://support.jennifersoft.com:8081/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>mvnrepository</id>
+            <url>http://repo1.maven.org/maven2</url>
+        </repository>
+    </repositories>
+</project>
