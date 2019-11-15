@@ -12,7 +12,7 @@ The first step is to register the adapter:
 5. Enter the path to the adapter JAR file ``csv-0.0.1.jar`` or upload the JAR file from you local machine.
 6. Enter the class name according to the data classification. Class types are discussed in detail below.
  
-<img src="https://raw.githubusercontent.com/jennifersoft/jennifer-extension-manuals/master/res/img/view_server_batch/1.png">
+<img src="./res/img/view_server_batch/1.png">
 
 
 ### ID and class name mapping table for data classification ##
@@ -37,7 +37,7 @@ The following table shows the required options for this batch
 | dir_name | NO | `../batch` |
 | file_name | NO | |
 
-<img src="https://github.com/jennifersoft/jennifer-extension-manuals/blob/master/res/img/view_server_batch/2.png">
+<img src="./res/img/view_server_batch/2.png">
 
 
 ### Top toolbar description ##
